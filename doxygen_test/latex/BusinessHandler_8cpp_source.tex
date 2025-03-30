@@ -1,0 +1,156 @@
+\doxysection{Business\+Handler.\+cpp}
+\hypertarget{BusinessHandler_8cpp_source}{}\label{BusinessHandler_8cpp_source}\index{/home/thanh/SensorStation/src/BusinessHandler.cpp@{/home/thanh/SensorStation/src/BusinessHandler.cpp}}
+\mbox{\hyperlink{BusinessHandler_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BusinessHandler_8h}{BusinessHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00003}\mbox{\hyperlink{classBusinessHandler_aebc20a5a0f809fb87f1c1c0829f7bda8}{00003}}\ \mbox{\hyperlink{classBusinessHandler_aebc20a5a0f809fb87f1c1c0829f7bda8}{BusinessHandler::BusinessHandler}}(\textcolor{keyword}{const}\ std::string\&\ configfile)\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00004}00004\ \ \ \ \ :\ running(false),\ config(configfile)\{\}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00008}\mbox{\hyperlink{classBusinessHandler_aac5cf00dd3bfa6f928577915ef3abbf2}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_aac5cf00dd3bfa6f928577915ef3abbf2}{BusinessHandler::heartbeatSending}}()\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ the\ server\ IP\ and\ port\ from\ the\ configuration}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ std::string\ serverIp\ =\ config.\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(\textcolor{stringliteral}{"{}Server"{}},\ \textcolor{stringliteral}{"{}ip"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ serverPort\ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Server"{}},\ \textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ UDPUnicast\ instance\ for\ sending\ heartbeats}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classUDPUnicast}{UDPUnicast}}\ udpUnicastHeartbeat;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Starting\ heartbeat\ to\ "{}}\ <<\ serverIp\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ serverPort\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Continuous\ loop\ for\ sending\ heartbeats\ periodically}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ the\ heartbeat\ to\ the\ configured\ server\ IP\ and\ port}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ udpUnicastHeartbeat.\mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{sendTo}}(serverIp,\ serverPort,\ heartbeatData);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Log\ the\ successful\ heartbeat\ transmission}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Sending\ heartbeat\ to\ "{}}\ <<\ serverIp\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ serverPort\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wait\ for\ 200\ milliseconds\ before\ sending\ the\ next\ heartbeat}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(200));}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Catch\ and\ log\ any\ errors\ during\ heartbeat\ sending}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(std::string(\textcolor{stringliteral}{"{}[Error\ sending\ heartbeat:\ "{}})\ +\ e.what()\ +\textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00036}00036\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Catch\ and\ log\ any\ errors\ during\ initialization\ of\ heartbeats}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(std::string(\textcolor{stringliteral}{"{}[Error\ in\ heartbeatSending:\ "{}})\ +\ e.what()\ +\textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00043}00043\ \textcolor{comment}{//\ Function\ check\ the\ configuration}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00044}00044\ \textcolor{keywordtype}{bool}\ BusinessHandler::checkConfig()\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ 1.\ Validate\ server\ configuration}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00046}00046\ \ \ \ \ std::string\ serverIp\ =\ config.\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(\textcolor{stringliteral}{"{}Server"{}},\ \textcolor{stringliteral}{"{}ip"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{int}\ serverPort\ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Server"{}},\ \textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (serverIp.empty()\ ||\ serverPort\ <=\ 0\ ||\ serverPort\ >\ 65535)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Invalid\ server\ IP\ or\ port\ in\ configuration.]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ 2.\ Validate\ Sensor\ and\ Station\ ports}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00054}00054\ \ \ \ \ std::string\ sensorIp\ \ =\ config.\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(\textcolor{stringliteral}{"{}Sensor"{}},\ \textcolor{stringliteral}{"{}ip"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ sensorPort\ \ \ \ \ \ \ \ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Sensor"{}},\ \textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{int}\ stationPort\ \ \ \ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Station"{}},\ \textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (sensorIp.empty()\ ||\ sensorPort\ <=\ 0\ ||\ sensorPort\ >\ 65535||\ stationPort\ <=\ 0\ ||\ stationPort\ >\ 65535)\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\ \textcolor{stringliteral}{"{}[Invalid\ Sensor\ IP,\ Sensor\ port,\ or\ Station\ port\ in\ configuration.]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ If\ execution\ reaches\ here,\ all\ checks\ have\ passed}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00067}\mbox{\hyperlink{classBusinessHandler_ad26afcefa7e4995f230b0c396be7572b}{00067}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_ad26afcefa7e4995f230b0c396be7572b}{BusinessHandler::recevfromSensor}}()\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00068}00068\ \ \ \ \ std::string\ fileName\ =\ std::filesystem::path(\_\_FILE\_\_).filename().string();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{int}\ portStation\ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Station"{}},\ \textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00071}00071\ \ \ \ \ std::string\ nameSensor\ =\ config.\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(\textcolor{stringliteral}{"{}Sensor"{}},\ \textcolor{stringliteral}{"{}name"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00074}00074\ \ \ \ \ std::string\ ipSever\ =\ config.\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(\textcolor{stringliteral}{"{}Server"{}},\ \textcolor{stringliteral}{"{}ip"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{int}\ portServer\ =\ config.\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{getIntValue}}(\textcolor{stringliteral}{"{}Server"{}},\textcolor{stringliteral}{"{}port"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{classUDPUnicast}{UDPUnicast}}\ udpUnicastreceivedFromSensor;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00078}00078\ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}{bindToPort}}(portStation);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00079}00079\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00080}00080\ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}{setOnDataReceived}}([fileName,\&udpUnicastreceivedFromSensor,\ \&nameSensor,\ ipSever,\ portServer,\ \textcolor{keyword}{this}](\textcolor{keyword}{const}\ std::vector<uint8\_t>\&\ data)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Log\ received\ data}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Received\ data:\ "{}};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keywordtype}{byte}\ :\ data)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::hex\ <<\ static\_cast<int>(\textcolor{keywordtype}{byte})\ <<\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::dec\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{sendTo}}(ipSever,portServer,data);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Conver\ to\ string}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ dataStr(data.begin(),\ data.end());}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSaver}{Saver}}\ saver(\textcolor{stringliteral}{"{}Data"{}},\ fileName,\ dataStr,\ nameSensor);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ saver.\mbox{\hyperlink{classSaver_a199cec2b0499a937b19808d5da694ba2}{writeData2File}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Data\ sent\ to\ "{}}\ <<\ ipSever\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ portServer\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(std::string(\textcolor{stringliteral}{"{}[Error\ processing\ data:\ "{}})\ +\ e.what()\ +\ \textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00101}00101\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00102}00102\ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}{setOnError}}([\textcolor{keyword}{this}](\textcolor{keyword}{const}\ std::string\ \&err)\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(\textcolor{stringliteral}{"{}[Unicast\ Error:\ "{}}\ +\ std::string(err)\ +\ \textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00105}00105\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ std::cout<<\textcolor{stringliteral}{"{}Station\ listenning\ from\ Sensor......."{}}<<std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}{listenfromUnicast}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(200));}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ udpUnicastreceivedFromSensor.\mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{stop}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00114}\mbox{\hyperlink{classBusinessHandler_a667f8f1c587bb348dfa07078f7191811}{00114}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_a667f8f1c587bb348dfa07078f7191811}{BusinessHandler::run}}()\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{if}(!checkConfig())\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ in\ configuration\ file.\ Exiting..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00118}00118\ \ \ \ \ running\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Starting\ Thread}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00121}00121\ \ \ \ \ std::thread\ heartbeatThread(\&\mbox{\hyperlink{classBusinessHandler_aac5cf00dd3bfa6f928577915ef3abbf2}{BusinessHandler::heartbeatSending}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00122}00122\ \ \ \ \ std::thread\ SensorSendThread(\&\mbox{\hyperlink{classBusinessHandler_ad26afcefa7e4995f230b0c396be7572b}{BusinessHandler::recevfromSensor}},\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (running\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classBusinessHandler_a667f8f1c587bb348dfa07078f7191811}{run}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//Stop\ Thread}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{if}\ (heartbeatThread.joinable())\ heartbeatThread.join();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{if}(SensorSendThread.joinable())\ SensorSendThread.join();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00132}00132\ \textcolor{comment}{//\ Function\ log\ Error}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00133}\mbox{\hyperlink{BusinessHandler_8h_a938d86be2cb51932a65992b7a5ea79a2}{00133}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8cpp_a938d86be2cb51932a65992b7a5ea79a2}{callError}}(std::string\ error)\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00134}00134\ \ \ \ \ std::string\ fileName\ =\ std::filesystem::path(\_\_FILE\_\_).filename().string();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00136}00136\ \ \ \ \ \mbox{\hyperlink{classSaver}{Saver}}\ saver(\textcolor{stringliteral}{"{}Error"{}},\ fileName,\ error,\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00137}00137\ \ \ \ \ saver.\mbox{\hyperlink{classSaver_a9197d8f1c032765d7e907df5d235f1d6}{writeError2File}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00140}\mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{00140}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8cpp_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{keyword}{const}\ std::string\ \&message)\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00141}00141\ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8cpp_a938d86be2cb51932a65992b7a5ea79a2}{callError}}(message);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(message);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00145}\mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{00145}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8cpp_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(\textcolor{keyword}{const}\ std::string\ \&message)\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00146}00146\ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8cpp_a938d86be2cb51932a65992b7a5ea79a2}{callError}}(message);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00147}00147\ \ \ \ \ std::cerr<<message<<std::endl;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8cpp_source_l00150}00150\ }
+
+\end{DoxyCode}

@@ -1,0 +1,47 @@
+\doxysection{UDPUnicast.\+h}
+\hypertarget{UDPUnicast_8h_source}{}\label{UDPUnicast_8h_source}\index{/home/thanh/SensorStation/include/UDPUnicast.h@{/home/thanh/SensorStation/include/UDPUnicast.h}}
+\mbox{\hyperlink{UDPUnicast_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ UDPUNICAST\_H}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ UDPUNICAST\_H}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <cstring>}\ \ \ \ \ \ \ \textcolor{comment}{//\ memset}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sys/types.h>}\ \ \ \textcolor{comment}{//\ socket\ types}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}\ \ \textcolor{comment}{//\ socket(),\ setsockopt()}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}\ \ \textcolor{comment}{//\ sockaddr\_in,\ INADDR\_ANY,\ htons()}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}\ \ \ \textcolor{comment}{//\ inet\_addr()}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <unistd.h>}\ \ \ \ \ \ \textcolor{comment}{//\ close()}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Saver_8h}{Saver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00019}\mbox{\hyperlink{classUDPUnicast}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classUDPUnicast}{UDPUnicast}}\{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533}{UDPUnicast}}();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234}{\string~UDPUnicast}}();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}{bindToPort}}(\textcolor{keywordtype}{int}\ port);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c}{receiveData}}(std::vector<uint8\_t>\&\ data);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{sendTo}}(\textcolor{keyword}{const}\ std::string\ \&ip,\ \textcolor{keywordtype}{int}\ port,\ \textcolor{keyword}{const}\ std::vector<uint8\_t>\ \&data);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{stop}}();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}{listenfromUnicast}}();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}{setOnDataReceived}}(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<uint8\_t>\ \&)>\ \&callback);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}{setOnError}}(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\ \&)>\ \&callback);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00030}\mbox{\hyperlink{classUDPUnicast_aa21ab9c8ec26fff3a9b33e6a4236fb2c}{00030}}\ \ \ \ \ std::string\ \mbox{\hyperlink{classUDPUnicast_aa21ab9c8ec26fff3a9b33e6a4236fb2c}{fileName}}\ =\ std::filesystem::path(\_\_FILE\_\_).filename().string();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00032}00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00033}00033\ \ \ \ \ \textcolor{keywordtype}{void}\ processIncomingDatagrams();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ port;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{int}\ socketFd;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00036}00036\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ std::vector<uint8\_t>\ \&)>\ onDataReceived;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00037}00037\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ std::string\ \&)>\ onError;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00038}00038\ \};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8h_source_l00041}00041\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

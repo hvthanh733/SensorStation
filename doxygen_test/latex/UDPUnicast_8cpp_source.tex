@@ -1,0 +1,155 @@
+\doxysection{UDPUnicast.\+cpp}
+\hypertarget{UDPUnicast_8cpp_source}{}\label{UDPUnicast_8cpp_source}\index{/home/thanh/SensorStation/src/UDPUnicast.cpp@{/home/thanh/SensorStation/src/UDPUnicast.cpp}}
+\mbox{\hyperlink{UDPUnicast_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UDPUnicast_8h}{UDPUnicast.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BusinessHandler_8h}{BusinessHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00005}\mbox{\hyperlink{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533}{00005}}\ \mbox{\hyperlink{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533}{UDPUnicast::UDPUnicast}}()}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00006}00006\ \ \ \ \ :port(port)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00007}00007\ \ \ \ \ socketFd\ =\ socket(AF\_INET,\ SOCK\_DGRAM,\ 0);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}Socket\ creation\ failed:\ "{}}\ +\ std::string(strerror(errno)));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00014}\mbox{\hyperlink{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234}{00014}}\ \mbox{\hyperlink{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234}{UDPUnicast::\string~UDPUnicast}}()\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{stop}}();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00019}\mbox{\hyperlink{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}{00019}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}{UDPUnicast::setOnError}}(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\ \&)>\ \&callback)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00020}00020\ \ \ \ \ onError\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00023}\mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{UDPUnicast::stop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ if\ (!running)\ return;}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ running\ =\ false;}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ close(socketFd);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ socketFd\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00032}\mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{UDPUnicast::sendTo}}(\textcolor{keyword}{const}\ std::string\ \&ip,\ \textcolor{keywordtype}{int}\ port,\ \textcolor{keyword}{const}\ std::vector<uint8\_t>\ \&data)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}Socket\ is\ not\ initialized:\ "{}}\ +\ std::string(strerror(errno)));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_in\ sendAddr\{\};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00038}00038\ \ \ \ \ memset(\&sendAddr,\ 0,\ \textcolor{keyword}{sizeof}(sendAddr));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00039}00039\ \ \ \ \ sendAddr.sin\_family\ =\ AF\_INET;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00040}00040\ \ \ \ \ sendAddr.sin\_port\ =\ htons(port);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (inet\_pton(AF\_INET,\ ip.c\_str(),\ \&sendAddr.sin\_addr)\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}Invalid\ IP\ address:\ "{}}\ +\ ip);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00046}00046\ \ \ \ \ ssize\_t\ sentLen\ =\ sendto(socketFd,\ data.data(),\ data.size(),\ 0,\ (\textcolor{keyword}{struct}\ sockaddr\ *)\&sendAddr,\ \textcolor{keyword}{sizeof}(sendAddr));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (sentLen\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ std::string\ errorMsg\ =\ \textcolor{stringliteral}{"{}[Failed\ to\ send\ data\ to\ "{}}\ +\ ip\ +\ \textcolor{stringliteral}{"{}:"{}}\ +\ std::to\_string(port)\ +\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ +\ strerror(errno)\ +\ \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(errorMsg);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00055}00055\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Sent\ "{}}\ <<\ sentLen\ <<\ \textcolor{stringliteral}{"{}\ bytes\ to\ "{}}\ <<\ ip\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ port\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00059}00059\ \textcolor{comment}{//\ Fuction\ call\ 1\ time\ to\ received\ Data}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00060}\mbox{\hyperlink{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c}{00060}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c}{UDPUnicast::receiveData}}(std::vector<uint8\_t>\&\ data)\{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Socket\ is\ not\ initialized"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[1024];}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{struct\ \ }sockaddr\_in\ senderAddr\{\};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00067}00067\ \ \ \ \ socklen\_t\ senderAddrLen\ =\ \textcolor{keyword}{sizeof}(senderAddr);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00068}00068\ \ \ \ \ ssize\_t\ recvData\ =\ recvfrom(socketFd,\ buffer,\ \textcolor{keyword}{sizeof}(buffer),0,}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{struct}\ sockaddr\ *)\&\ senderAddr,\ \&senderAddrLen);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00071}00071\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}UDPUnicast\ Received\ Data:\ "{}};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ recvData;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ std::cout<<\ std::hex\ <<\ std::setw(2)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ (int)(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})buffer[i]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00075}00075\ \ \ \ \ std::cout<<std::endl;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}(recvData\ <\ 0)\{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(\textcolor{stringliteral}{"{}[Receiving\ data\ failed]"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00081}00081\ \ \ \ \ data.assign(buffer,\ buffer\ +\ recvData);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Optional:\ Log\ sender\ information}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordtype}{char}\ senderIP[INET\_ADDRSTRLEN];}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00084}00084\ \ \ \ \ inet\_ntop(AF\_INET,\ \&senderAddr.sin\_addr,\ senderIP,\ \textcolor{keyword}{sizeof}(senderIP));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00085}00085\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Received\ "{}}\ <<\ std::dec\ <<\ recvData\ <<\ \textcolor{stringliteral}{"{}\ bytes\ from\ "{}}\ <<\ senderIP}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ ntohs(senderAddr.sin\_port)\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00089}00089\ \textcolor{comment}{//\ Fuction\ bind\ to\ Port}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00090}\mbox{\hyperlink{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}{00090}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}{UDPUnicast::bindToPort}}(\textcolor{keywordtype}{int}\ port)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Socket\ is\ not\ initialized]"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_in\ receivedAddr\{\};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00097}00097\ \ \ \ \ memset(\&receivedAddr,\ 0,\ \textcolor{keyword}{sizeof}(receivedAddr));}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00098}00098\ \ \ \ \ receivedAddr.sin\_family\ =\ AF\_INET;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00099}00099\ \ \ \ \ receivedAddr.sin\_port\ =\ htons(port);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00100}00100\ \ \ \ \ receivedAddr.sin\_addr.s\_addr\ =\ INADDR\_ANY;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Allow\ address\ reuse}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{int}\ optval\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (setsockopt(socketFd,\ SOL\_SOCKET,\ SO\_REUSEADDR,\ \&optval,\ \textcolor{keyword}{sizeof}(optval))\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Reuse\ socket\ failed]"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (bind(socketFd,\ (\textcolor{keyword}{struct}\ sockaddr\ *)\&receivedAddr,\ \textcolor{keyword}{sizeof}(receivedAddr))\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Socket\ binding\ failed]"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00111}00111\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Bind\ successful\ on\ port\ "{}}\ <<\ port\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00118}\mbox{\hyperlink{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}{00118}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}{UDPUnicast::setOnDataReceived}}(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::vector<uint8\_t>\ \&)>\ \&callback)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00119}00119\ \ \ \ \ onDataReceived\ =\ callback;}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00122}\mbox{\hyperlink{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}{00122}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}{UDPUnicast::listenfromUnicast}}()\{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00123}00123\ \ \ \ \ processIncomingDatagrams();}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00125}00125\ \textcolor{keywordtype}{void}\ UDPUnicast::processIncomingDatagrams()\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}\ (socketFd\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(\textcolor{stringliteral}{"{}Socket\ is\ not\ initialized,\ cannot\ receive\ data!"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[4096];}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ sockaddr\_in\ senderAddr\{\};}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ socklen\_t\ addrLen\ =\ \textcolor{keyword}{sizeof}(senderAddr);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ ssize\_t\ recvLen\ =\ recvfrom(socketFd,\ buffer,\ \textcolor{keyword}{sizeof}(buffer),\ 0,\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{struct}\ sockaddr\ *)\&senderAddr,\ \&addrLen);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (recvLen\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<uint8\_t>\ data(buffer,\ buffer\ +\ recvLen);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (onDataReceived)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ onDataReceived(data);}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (recvLen\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Receive\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (onError)\ onError(\textcolor{stringliteral}{"{}Receive\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{UDPUnicast_8cpp_source_l00149}00149\ \}}
+
+\end{DoxyCode}

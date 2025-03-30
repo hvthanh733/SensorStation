@@ -1,0 +1,79 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Business\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler Class Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Constructor \& Destructor Documentation}{5}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}BusinessHandler()}{5}{subsubsection.3.1.2.1}%
+\contentsline {subsection}{\numberline {3.1.3}Member Function Documentation}{5}{subsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}heartbeatSending()}{5}{subsubsection.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}recevfromSensor()}{6}{subsubsection.3.1.3.2}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}run()}{6}{subsubsection.3.1.3.3}%
+\contentsline {section}{\numberline {3.2}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reader Class Reference}{6}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{6}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Constructor \& Destructor Documentation}{6}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}ConfigReader()}{6}{subsubsection.3.2.2.1}%
+\contentsline {subsection}{\numberline {3.2.3}Member Function Documentation}{7}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}getIntValue()}{7}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}getValue()}{7}{subsubsection.3.2.3.2}%
+\contentsline {subsection}{\numberline {3.2.4}Member Data Documentation}{7}{subsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.4.1}fileName}{7}{subsubsection.3.2.4.1}%
+\contentsline {section}{\numberline {3.3}Saver Class Reference}{7}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{7}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Constructor \& Destructor Documentation}{8}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Saver()}{8}{subsubsection.3.3.2.1}%
+\contentsline {subsection}{\numberline {3.3.3}Member Function Documentation}{8}{subsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.3.1}writeData2File()}{8}{subsubsection.3.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.3.2}writeError2File()}{8}{subsubsection.3.3.3.2}%
+\contentsline {section}{\numberline {3.4}UDPUnicast Class Reference}{8}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{9}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Constructor \& Destructor Documentation}{9}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}UDPUnicast()}{9}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}$\sim $UDPUnicast()}{9}{subsubsection.3.4.2.2}%
+\contentsline {subsection}{\numberline {3.4.3}Member Function Documentation}{9}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}bindToPort()}{9}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}listenfromUnicast()}{9}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {3.4.3.3}receiveData()}{9}{subsubsection.3.4.3.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.4}sendTo()}{10}{subsubsection.3.4.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.3.5}setOnDataReceived()}{10}{subsubsection.3.4.3.5}%
+\contentsline {subsubsection}{\numberline {3.4.3.6}setOnError()}{10}{subsubsection.3.4.3.6}%
+\contentsline {subsubsection}{\numberline {3.4.3.7}stop()}{10}{subsubsection.3.4.3.7}%
+\contentsline {subsection}{\numberline {3.4.4}Member Data Documentation}{10}{subsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.4.1}fileName}{10}{subsubsection.3.4.4.1}%
+\contentsline {chapter}{\numberline {4}File Documentation}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}CMake\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lists.txt File Reference}{11}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Function Documentation}{11}{subsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}cmake\_minimum\_required()}{11}{subsubsection.4.1.1.1}%
+\contentsline {section}{\numberline {4.2}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Business\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.h File Reference}{11}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Function Documentation}{12}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}callError()}{12}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}cerrError()}{12}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}throwError()}{12}{subsubsection.4.2.1.3}%
+\contentsline {section}{\numberline {4.3}Business\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reader.h File Reference}{13}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{14}{section.4.5}%
+\contentsline {section}{\numberline {4.6}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Saver.h File Reference}{14}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Saver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{15}{section.4.7}%
+\contentsline {section}{\numberline {4.8}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/include/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}UDPUnicast.h File Reference}{16}{section.4.8}%
+\contentsline {section}{\numberline {4.9}UDPUnicast.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{17}{section.4.9}%
+\contentsline {section}{\numberline {4.10}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Business\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.cpp File Reference}{17}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Function Documentation}{18}{subsection.4.10.1}%
+\contentsline {subsubsection}{\numberline {4.10.1.1}callError()}{18}{subsubsection.4.10.1.1}%
+\contentsline {subsubsection}{\numberline {4.10.1.2}cerrError()}{18}{subsubsection.4.10.1.2}%
+\contentsline {subsubsection}{\numberline {4.10.1.3}throwError()}{18}{subsubsection.4.10.1.3}%
+\contentsline {section}{\numberline {4.11}Business\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{18}{section.4.11}%
+\contentsline {section}{\numberline {4.12}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reader.cpp File Reference}{20}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Reader.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{20}{section.4.13}%
+\contentsline {section}{\numberline {4.14}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/src/main.cpp File Reference}{21}{section.4.14}%
+\contentsline {subsection}{\numberline {4.14.1}Detailed Description}{22}{subsection.4.14.1}%
+\contentsline {subsection}{\numberline {4.14.2}Function Documentation}{22}{subsection.4.14.2}%
+\contentsline {subsubsection}{\numberline {4.14.2.1}main()}{22}{subsubsection.4.14.2.1}%
+\contentsline {section}{\numberline {4.15}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{22}{section.4.15}%
+\contentsline {section}{\numberline {4.16}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Saver.cpp File Reference}{23}{section.4.16}%
+\contentsline {section}{\numberline {4.17}Saver.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{23}{section.4.17}%
+\contentsline {section}{\numberline {4.18}/home/thanh/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sensor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Station/src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}UDPUnicast.cpp File Reference}{23}{section.4.18}%
+\contentsline {section}{\numberline {4.19}UDPUnicast.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{24}{section.4.19}%
+\contentsline {chapter}{Index}{27}{section*.28}%

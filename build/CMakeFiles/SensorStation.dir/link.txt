@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SensorStation.dir/src/main.cpp.o CMakeFiles/SensorStation.dir/src/BusinessHandler.cpp.o CMakeFiles/SensorStation.dir/src/Saver.cpp.o CMakeFiles/SensorStation.dir/src/ConfigReader.cpp.o CMakeFiles/SensorStation.dir/src/UDPUnicast.cpp.o -o SensorStation 

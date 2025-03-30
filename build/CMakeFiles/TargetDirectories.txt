@@ -1,0 +1,3 @@
+/home/thanh/SensorStation/build/CMakeFiles/SensorStation.dir
+/home/thanh/SensorStation/build/CMakeFiles/edit_cache.dir
+/home/thanh/SensorStation/build/CMakeFiles/rebuild_cache.dir

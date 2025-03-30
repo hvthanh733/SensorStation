@@ -1,0 +1,39 @@
+\doxysection{Saver.\+h}
+\hypertarget{Saver_8h_source}{}\label{Saver_8h_source}\index{/home/thanh/SensorStation/include/Saver.h@{/home/thanh/SensorStation/include/Saver.h}}
+\mbox{\hyperlink{Saver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ SAVER\_H}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ SAVER\_H}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00015}\mbox{\hyperlink{classSaver}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSaver}{Saver}}\{}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00016}00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00017}00017\ \ \ \ \ \mbox{\hyperlink{classSaver}{Saver}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ nameFile,\ \textcolor{keyword}{const}\ std::string\&\ data,\ std::string\ nameSensor\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a9197d8f1c032765d7e907df5d235f1d6}{writeError2File}}();}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a199cec2b0499a937b19808d5da694ba2}{writeData2File}}();}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00020}00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00021}00021\ \ \ \ \ std::string\ directoryPath;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00022}00022\ \ \ \ \ std::string\ namefile;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00023}00023\ \ \ \ \ std::string\ sensor;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00024}00024\ \ \ \ \ std::string\ data;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00025}00025\ \ \ \ \ std::string\ Pathfile;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00026}00026\ \ \ \ \ std::ofstream\ file;}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00029}00029\ \};}
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{Saver_8h_source_l00033}00033\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

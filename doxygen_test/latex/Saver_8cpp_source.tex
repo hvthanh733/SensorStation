@@ -1,0 +1,48 @@
+\doxysection{Saver.\+cpp}
+\hypertarget{Saver_8cpp_source}{}\label{Saver_8cpp_source}\index{/home/thanh/SensorStation/src/Saver.cpp@{/home/thanh/SensorStation/src/Saver.cpp}}
+\mbox{\hyperlink{Saver_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Saver_8h}{Saver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00005}\mbox{\hyperlink{classSaver_a4e2ef0e2824b496d1e6b1d1ca33adae2}{00005}}\ \mbox{\hyperlink{classSaver_a4e2ef0e2824b496d1e6b1d1ca33adae2}{Saver::Saver}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ nameFile,\ \textcolor{keyword}{const}\ std::string\&\ data,\ std::string\ nameSensor)}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00006}00006\ \ \ \ :\ namefile(nameFile),sensor(nameSensor),data(data),\ directoryPath(\textcolor{stringliteral}{"{}logs"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00008}00008\ \ \ \ \ std::filesystem::create\_directories(directoryPath);}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordflow}{if}(name\ ==\ \textcolor{stringliteral}{"{}Error"{}})\{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ Pathfile\ =\ directoryPath\ +\ \textcolor{stringliteral}{"{}/[System][SensorStation].csv"{}};}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00012}00012\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(name\ ==\ \textcolor{stringliteral}{"{}Data"{}})\{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ Pathfile\ =\ directoryPath\ +\ \textcolor{stringliteral}{"{}/[Data]["{}}+sensor+\textcolor{stringliteral}{"{}].csv"{}};}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00015}00015\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00016}00016\ \ \ \ \ file.open(Pathfile,\ std::ios::out\ |\ std::ios::binary\ |\ std::ios::app);}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ file:\ "{}}\ <<\ Pathfile\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00019}00019\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Saving\ data\ to:\ "{}}\ <<\ Pathfile\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00024}\mbox{\hyperlink{classSaver_a9197d8f1c032765d7e907df5d235f1d6}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a9197d8f1c032765d7e907df5d235f1d6}{Saver::writeError2File}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{auto}\ nowTime\ =\ std::chrono::system\_clock::to\_time\_t(now\ +\ std::chrono::hours(7));}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00028}00028\ \ \ \ \ file\ <<\ std::put\_time(std::localtime(\&nowTime),\ \textcolor{stringliteral}{"{}[\%d\%m\%Y\_\%H\%M\%S]"{}})}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00029}00029\ \ \ \ \ <<\ \textcolor{stringliteral}{"{}[Error\ in\ "{}}\ <<\ namefile\ <<\textcolor{stringliteral}{"{}]"{}}<<data\ <<std::endl;}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00031}00031\ \ \ \ \ file.flush();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00032}00032\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00034}\mbox{\hyperlink{classSaver_a199cec2b0499a937b19808d5da694ba2}{00034}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSaver_a199cec2b0499a937b19808d5da694ba2}{Saver::writeData2File}}()\ \{}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{auto}\ nowTime\ =\ std::chrono::system\_clock::to\_time\_t(now\ +\ std::chrono::hours(7));}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00038}00038\ \ \ \ \ file\ <<\ std::put\_time(std::localtime(\&nowTime),\ \textcolor{stringliteral}{"{}[\%d\%m\%Y\_\%H\%M\%S]"{}})}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ <<\textcolor{stringliteral}{"{}["{}}<<data<<\textcolor{stringliteral}{"{}]"{}}<<std::endl;}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00040}00040\ \ \ \ \ file.flush();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00041}00041\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{Saver_8cpp_source_l00042}00042\ \}}
+
+\end{DoxyCode}

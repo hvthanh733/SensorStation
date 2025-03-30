@@ -1,0 +1,37 @@
+\doxysection{Business\+Handler.\+h}
+\hypertarget{BusinessHandler_8h_source}{}\label{BusinessHandler_8h_source}\index{/home/thanh/SensorStation/include/BusinessHandler.h@{/home/thanh/SensorStation/include/BusinessHandler.h}}
+\mbox{\hyperlink{BusinessHandler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ BUSINESSHANDLER\_H}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ BUSINESSHANDLER\_H}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigReader_8h}{ConfigReader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Saver_8h}{Saver.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{UDPUnicast_8h}{UDPUnicast.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00010}00010\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8h_a938d86be2cb51932a65992b7a5ea79a2}{callError}}(std::string\ error);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00011}00011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{keyword}{const}\ std::string\ \&message);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00012}00012\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{BusinessHandler_8h_a921ea823f5b7e3707f18e7872c69e618}{cerrError}}(\textcolor{keyword}{const}\ std::string\ \&message);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00014}\mbox{\hyperlink{classBusinessHandler}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBusinessHandler}{BusinessHandler}}\{}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00015}00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{classBusinessHandler}{BusinessHandler}}(\textcolor{keyword}{const}\ std::string\&\ configfile);}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_a667f8f1c587bb348dfa07078f7191811}{run}}();\ \ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_aac5cf00dd3bfa6f928577915ef3abbf2}{heartbeatSending}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBusinessHandler_ad26afcefa7e4995f230b0c396be7572b}{recevfromSensor}}();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00021}00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classConfigReader}{ConfigReader}}\ config;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkConfig();}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00024}00024\ \ \ \ \ std::vector<uint8\_t>\ heartbeatData\ =\ \{0x00,\ 0x01\};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ running;}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00026}00026\ \ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00027}00027\ \};}
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{BusinessHandler_8h_source_l00031}00031\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

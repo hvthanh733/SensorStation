@@ -1,0 +1,154 @@
+\doxysection{UDPUnicast Class Reference}
+\hypertarget{classUDPUnicast}{}\label{classUDPUnicast}\index{UDPUnicast@{UDPUnicast}}
+
+
+{\ttfamily \#include $<$UDPUnicast.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533}{UDPUnicast}} ()
+\item 
+\mbox{\hyperlink{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234}{\texorpdfstring{$\sim$}{\string~}\+UDPUnicast}} ()
+\item 
+void \mbox{\hyperlink{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}{bind\+To\+Port}} (int port)
+\item 
+void \mbox{\hyperlink{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c}{receive\+Data}} (std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \mbox{\hyperlink{classUDPUnicast_a1a8f396e43127179f07652501090988b}{send\+To}} (const std\+::string \&ip, int port, const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\item 
+void \mbox{\hyperlink{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}{stop}} ()
+\item 
+void \mbox{\hyperlink{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}{listenfrom\+Unicast}} ()
+\item 
+void \mbox{\hyperlink{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}{set\+On\+Data\+Received}} (const std\+::function$<$ void(const std\+::vector$<$ uint8\+\_\+t $>$ \&)$>$ \&callback)
+\item 
+void \mbox{\hyperlink{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}{set\+On\+Error}} (const std\+::function$<$ void(const std\+::string \&)$>$ \&callback)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classUDPUnicast_aa21ab9c8ec26fff3a9b33e6a4236fb2c}{file\+Name}} = std\+::filesystem\+::path(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+).filename().string()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8h_source_l00019}{19}} of file \mbox{\hyperlink{UDPUnicast_8h_source}{UDPUnicast.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533}\label{classUDPUnicast_aa0f679c6c8393f60b3668d01bc7f7533} 
+\index{UDPUnicast@{UDPUnicast}!UDPUnicast@{UDPUnicast}}
+\index{UDPUnicast@{UDPUnicast}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{UDPUnicast()}{UDPUnicast()}}
+{\footnotesize\ttfamily UDPUnicast\+::\+UDPUnicast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234}\label{classUDPUnicast_ab4c7a77414dc4b546ca9ce7d17150234} 
+\index{UDPUnicast@{UDPUnicast}!````~UDPUnicast@{\texorpdfstring{$\sim$}{\string~}UDPUnicast}}
+\index{````~UDPUnicast@{\texorpdfstring{$\sim$}{\string~}UDPUnicast}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}UDPUnicast()}{\string~UDPUnicast()}}
+{\footnotesize\ttfamily UDPUnicast\+::\texorpdfstring{$\sim$}{\string~}\+UDPUnicast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18}\label{classUDPUnicast_ab73aa979b405b39c9f998782a0b25b18} 
+\index{UDPUnicast@{UDPUnicast}!bindToPort@{bindToPort}}
+\index{bindToPort@{bindToPort}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{bindToPort()}{bindToPort()}}
+{\footnotesize\ttfamily void UDPUnicast\+::bind\+To\+Port (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e}\label{classUDPUnicast_a1c60871d650558dd9a2e391ccacf172e} 
+\index{UDPUnicast@{UDPUnicast}!listenfromUnicast@{listenfromUnicast}}
+\index{listenfromUnicast@{listenfromUnicast}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{listenfromUnicast()}{listenfromUnicast()}}
+{\footnotesize\ttfamily void UDPUnicast\+::listenfrom\+Unicast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c}\label{classUDPUnicast_a7d028954c28f931723ca4c4fe571cf8c} 
+\index{UDPUnicast@{UDPUnicast}!receiveData@{receiveData}}
+\index{receiveData@{receiveData}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{receiveData()}{receiveData()}}
+{\footnotesize\ttfamily void UDPUnicast\+::receive\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_a1a8f396e43127179f07652501090988b}\label{classUDPUnicast_a1a8f396e43127179f07652501090988b} 
+\index{UDPUnicast@{UDPUnicast}!sendTo@{sendTo}}
+\index{sendTo@{sendTo}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{sendTo()}{sendTo()}}
+{\footnotesize\ttfamily void UDPUnicast\+::send\+To (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ip,  }\item[{int}]{port,  }\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4}\label{classUDPUnicast_ab4d60cad8de929a906362c7a365e34f4} 
+\index{UDPUnicast@{UDPUnicast}!setOnDataReceived@{setOnDataReceived}}
+\index{setOnDataReceived@{setOnDataReceived}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{setOnDataReceived()}{setOnDataReceived()}}
+{\footnotesize\ttfamily void UDPUnicast\+::set\+On\+Data\+Received (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(const std\+::vector$<$ uint8\+\_\+t $>$ \&)$>$ \&}]{callback }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2}\label{classUDPUnicast_a1896b7246db1be69cad492b14a721ba2} 
+\index{UDPUnicast@{UDPUnicast}!setOnError@{setOnError}}
+\index{setOnError@{setOnError}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{setOnError()}{setOnError()}}
+{\footnotesize\ttfamily void UDPUnicast\+::set\+On\+Error (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(const std\+::string \&)$>$ \&}]{callback }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+\Hypertarget{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8}\label{classUDPUnicast_ab1ce5ef2e11b0be8cb1cec7c1aa5f2f8} 
+\index{UDPUnicast@{UDPUnicast}!stop@{stop}}
+\index{stop@{stop}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void UDPUnicast\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{UDPUnicast_8cpp_source}{UDPUnicast.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classUDPUnicast_aa21ab9c8ec26fff3a9b33e6a4236fb2c}\label{classUDPUnicast_aa21ab9c8ec26fff3a9b33e6a4236fb2c} 
+\index{UDPUnicast@{UDPUnicast}!fileName@{fileName}}
+\index{fileName@{fileName}!UDPUnicast@{UDPUnicast}}
+\doxysubsubsection{\texorpdfstring{fileName}{fileName}}
+{\footnotesize\ttfamily std\+::string UDPUnicast\+::file\+Name = std\+::filesystem\+::path(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+).filename().string()}
+
+
+
+Definition at line \mbox{\hyperlink{UDPUnicast_8h_source_l00030}{30}} of file \mbox{\hyperlink{UDPUnicast_8h_source}{UDPUnicast.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/thanh/\+Sensor\+Station/include/\mbox{\hyperlink{UDPUnicast_8h}{UDPUnicast.\+h}}\item 
+/home/thanh/\+Sensor\+Station/src/\mbox{\hyperlink{UDPUnicast_8cpp}{UDPUnicast.\+cpp}}\end{DoxyCompactItemize}

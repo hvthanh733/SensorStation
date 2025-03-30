@@ -1,0 +1,103 @@
+\doxysection{Config\+Reader.\+cpp}
+\hypertarget{ConfigReader_8cpp_source}{}\label{ConfigReader_8cpp_source}\index{/home/thanh/SensorStation/src/ConfigReader.cpp@{/home/thanh/SensorStation/src/ConfigReader.cpp}}
+\mbox{\hyperlink{ConfigReader_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigReader_8h}{ConfigReader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BusinessHandler_8h}{BusinessHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00006}\mbox{\hyperlink{classConfigReader_a83d92c6c091236d38b52c4ca18659c92}{00006}}\ \mbox{\hyperlink{classConfigReader_a83d92c6c091236d38b52c4ca18659c92}{ConfigReader::ConfigReader}}(\textcolor{keyword}{const}\ std::string\ \&filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00007}00007\ \ \ \ \ parseConfig(filePath);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00010}00010\ \textcolor{comment}{//\ Helper\ function\ to\ trim\ whitespace\ from\ a\ string}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00011}00011\ std::string\ ConfigReader::trim(\textcolor{keyword}{const}\ std::string\ \&str)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ \ \ \ (space)}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ \(\backslash\)t\ (tab)}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ \(\backslash\)n\ (endl)}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ \(\backslash\)r\ (return\ start\ of\ line)-\/}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ first\ =\ str.find\_first\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t\(\backslash\)n\(\backslash\)r"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (first\ ==\ std::string::npos)\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ last\ =\ str.find\_last\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t\(\backslash\)n\(\backslash\)r"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{return}\ str.substr(first,\ last\ -\/\ first\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00022}00022\ \textcolor{keywordtype}{void}\ ConfigReader::parseConfig(\textcolor{keyword}{const}\ std::string\ \&filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Open\ file\ .ini}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00024}00024\ \ \ \ \ std::ifstream\ file(filePath);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Unable\ to\ open\ file:\ "{}}\ +filePath+\ \textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00029}00029\ \ \ \ \ std::string\ line,\ currentSection;}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(file,\ line))\{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ line\ =\ trim(line);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Skip\ comments\ and\ empty\ lines}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty()\ ||\ line[0]\ ==\ \textcolor{charliteral}{';'}\ ||\ line[0]\ ==\ \textcolor{charliteral}{'\#'})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(line[0]\ ==\ \textcolor{charliteral}{'['}\ \&\&\ line.back()\ ==\ \textcolor{charliteral}{']'})\{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ currentSection\ =\ line.substr(1,\ line.size()\ -\/\ 2);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ currentSection\ =\ trim(currentSection);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ key-\/value\ pairs}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!currentSection.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ equalPos\ =\ line.find(\textcolor{charliteral}{'='});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (equalPos\ ==\ std::string::npos)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ Key\ of\ Section}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ key\ =\ trim(line.substr(0,\ equalPos));}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ Value\ of\ Key}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ value\ =\ trim(line.substr(equalPos\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ configData[currentSection][key]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00057}00057\ \textcolor{comment}{//\ Function\ get\ string\ value\ }}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00058}\mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{00058}}\ std::string\ \mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{ConfigReader::getValue}}(\textcolor{keyword}{const}\ std::string\ \&section,\ \textcolor{keyword}{const}\ std::string\ \&key)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{auto}\ sectionIt\ =\ configData.find(section);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (sectionIt\ ==\ configData.end())\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Section\ not\ found:\ "{}}\ +\ section\ +\ \textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{auto}\ keyIt\ =\ sectionIt-\/>second.find(key);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (keyIt\ ==\ sectionIt-\/>second.end())\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Key\ of\ "{}}+section+\textcolor{stringliteral}{"{}\ not\ found]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ keyIt-\/>second;}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00074}00074\ \textcolor{comment}{//\ Function\ get\ an\ integer\ value}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00075}\mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{00075}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classConfigReader_a92f31def4111ef5bdb7400936dd0437d}{ConfigReader::getIntValue}}(\textcolor{keyword}{const}\ std::string\ \&section,\ \textcolor{keyword}{const}\ std::string\ \&key)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ sectionIt\ =\ configData.find(section);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ std::string\ valueStr\ =\ \mbox{\hyperlink{classConfigReader_af768f25607585b56fa0e6dde0847375b}{getValue}}(section,\ key);\ \ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ std::regex\ pattern(\textcolor{stringliteral}{"{}\string^[0-\/9]+\$"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::regex\_match(valueStr,\ pattern))\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Value\ contains\ non-\/numeric\ or\ have\ special\ characters:\ "{}}\ +\ valueStr\ +\ \textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ std::stoi(valueStr);}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00089}00089\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::invalid\_argument\ \&e)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Invalid\ integer\ value\ for\ key:\ "{}}\ +\ section\ +\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ +\ key\ +\textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00092}00092\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::out\_of\_range\ \&e)\ \{}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Write\ Error\ into\ log}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{BusinessHandler_8h_a2a38e79d474ac5eafb6832ca8390e7c8}{throwError}}(\textcolor{stringliteral}{"{}[Integer\ value\ out\ of\ range\ for\ key:\ "{}}\ +\ section\ +\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ +\ key\ +\textcolor{stringliteral}{"{}]"{}});}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{ConfigReader_8cpp_source_l00097}00097\ \}}
+
+\end{DoxyCode}
