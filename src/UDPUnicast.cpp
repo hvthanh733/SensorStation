@@ -10,11 +10,9 @@ UDPUnicast::UDPUnicast()
     }
 }
 
-
 UDPUnicast::~UDPUnicast() {
     stop();
 }
-
 
 void UDPUnicast::setOnError(const std::function<void(const std::string &)> &callback) {
     onError = callback;
@@ -54,7 +52,6 @@ void UDPUnicast::sendTo(const std::string &ip, int port, const std::vector<uint8
 
     std::cout << "Sent " << sentLen << " bytes to " << ip << ":" << port << std::endl;
 }
-
 
 // Fuction call 1 time to received Data
 void UDPUnicast::receiveData(std::vector<uint8_t>& data){
@@ -113,8 +110,6 @@ void UDPUnicast::bindToPort(int port) {
     }
 }
 
-
-
 void UDPUnicast::setOnDataReceived(const std::function<void(const std::vector<uint8_t> &)> &callback) {
     onDataReceived = callback;
 }
@@ -122,6 +117,7 @@ void UDPUnicast::setOnDataReceived(const std::function<void(const std::vector<ui
 void UDPUnicast::listenfromUnicast(){
     processIncomingDatagrams();
 }
+
 void UDPUnicast::processIncomingDatagrams() {
     if (socketFd < 0) {
         cerrError("Socket is not initialized, cannot receive data!");

@@ -1,7 +1,5 @@
 #include "Saver.h"
 
-
-
 Saver::Saver(const std::string& name, const std::string& nameFile, const std::string& data, std::string nameSensor)
    : namefile(nameFile),sensor(nameSensor),data(data), directoryPath("logs") {
 
